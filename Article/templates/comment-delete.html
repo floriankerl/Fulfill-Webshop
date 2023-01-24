@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block title %}Delete Comment{% endblock %}
+
+{% block content %}
+    {% if user.id == that_one_comment.extended_user.id or user.is_superuser %}
+        <h2>Delete Comment</h2>
+        <form method="POST" id="delete_article_form" class="basic-form">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ that_one_comment.title }}"?</p>
+            <div id="delete_article_form_buttons">
+                <a href="{% url 'article-detail' that_one_comment.get_related_article_id %}">Cancel</a>
+                <input type="submit" value="Delete">
+            </div>
+        </form>
+    {% else %}
+        <p>You don't have permission to perform this action</p>
+    {% endif %}
+{% endblock %}
+
+
