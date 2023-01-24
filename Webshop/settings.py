@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 # import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,17 +19,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEFAULT_FROM_EMAIL = 'fullfill.webshop@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'fullfill.webshop@gmail.com'
-EMAIL_HOST_PASSWORD = 'WiSe2122'
-EMAIL_PORT = 587
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = config("EMAIL_PORT")
 EMAIL_USE_TLS = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tb0i#r4t6_k*y1igvvh+!gy#+!e^-jm=%m(&vw#p0wq6t&ei4e'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
